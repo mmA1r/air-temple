@@ -1,0 +1,60 @@
+.element-mark {
+    position: relative;
+
+    width: min(58vw, 420px);
+    height: auto;
+
+    display: block;
+
+    overflow: visible;
+}
+
+.element-mark__orbit {
+    position: relative;
+
+    fill: none;
+    stroke: var(--mark-a);
+    stroke-width: 3;
+    opacity: 0.7;
+
+    transform-origin: 160px 160px;
+    animation: mark-spin 20s linear infinite;
+    transition: stroke var(--theme-transition), opacity var(--theme-transition);
+}
+
+.element-mark__orbit--inner {
+    animation-direction: reverse;
+    animation-duration: 14s;
+}
+
+.element-mark__wave,
+.element-mark__flame {
+    position: relative;
+
+    fill: none;
+    stroke: url("#waterAirGradient");
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition: opacity var(--theme-transition), stroke var(--theme-transition);
+}
+
+.element-mark__wave {
+    stroke-width: 14;
+    opacity: var(--water-symbol-opacity);
+}
+
+.element-mark__flame {
+    stroke-width: 10;
+    opacity: var(--fire-symbol-opacity);
+}
+
+@keyframes mark-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

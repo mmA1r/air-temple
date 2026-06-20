@@ -1,0 +1,134 @@
+.gallery-page {
+    position: relative;
+
+    width: 100%;
+
+    padding: 56px 40px 88px;
+
+    background-color: var(--background);
+}
+
+.gallery-page__title {
+    position: relative;
+
+    margin: 0 0 42px;
+
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 900;
+    color: var(--text);
+}
+
+.gallery-page__state {
+    position: relative;
+
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.gallery-page__years {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+}
+
+.gallery-page__year {
+    position: relative;
+}
+
+.gallery-page__year-title {
+    position: relative;
+
+    margin: 0 0 18px;
+
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.gallery-page__grid {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.gallery-page__card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 0;
+
+    background-color: transparent;
+    border: none;
+
+    text-align: left;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.gallery-page__image-wrap {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    display: block;
+
+    background-color: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-page__image {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.gallery-page__placeholder {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    background: linear-gradient(135deg, var(--soft), var(--glow-strong));
+}
+
+.gallery-page__card-title {
+    position: relative;
+
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: var(--text);
+}
+
+@media (max-width: 680px) {
+    .gallery-page {
+        padding: 40px 20px 64px;
+    }
+
+    .gallery-page__title {
+        font-size: 38px;
+    }
+}

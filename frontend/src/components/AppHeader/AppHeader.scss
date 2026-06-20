@@ -1,0 +1,104 @@
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+
+    padding: 18px 40px;
+
+    background-color: color-mix(in srgb, var(--surface) 88%, transparent);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(18px);
+}
+
+.app-header__brand {
+    position: relative;
+
+    display: inline-flex;
+
+    padding: 0;
+
+    background-color: transparent;
+    border: none;
+
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.app-header__nav {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.app-header__link,
+.app-header__control {
+    position: relative;
+
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 14px;
+
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 999px;
+
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: color var(--theme-transition), border-color var(--theme-transition), background-color var(--theme-transition);
+}
+
+.app-header__link:hover,
+.app-header__link--active,
+.app-header__control:hover {
+    background-color: var(--soft);
+    border-color: var(--line);
+
+    color: var(--text);
+}
+
+.app-header__controls {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+@media (max-width: 760px) {
+    .app-header {
+        grid-template-columns: 1fr;
+
+        padding: 16px 20px;
+    }
+
+    .app-header__nav,
+    .app-header__controls {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+}
