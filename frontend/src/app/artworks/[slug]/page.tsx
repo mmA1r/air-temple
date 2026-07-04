@@ -1,4 +1,4 @@
-import ArtworkPage from "../../../views/ArtworkPage/ArtworkPage";
+import ArtworkPage from "@views/ArtworkPage/ArtworkPage";
 
 function Page() {
     return <ArtworkPage />;

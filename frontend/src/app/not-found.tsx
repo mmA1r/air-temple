@@ -1,4 +1,4 @@
-import NotFoundPage from "../views/NotFoundPage/NotFoundPage";
+import NotFoundPage from "@views/NotFoundPage/NotFoundPage";
 
 function NotFound() {
     return <NotFoundPage />;

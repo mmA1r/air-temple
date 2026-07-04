@@ -1,4 +1,4 @@
-import type { IAdminArtworkPayload, IArtwork, IAsset, Locale } from "../types";
+import type { IAdminArtworkPayload, IArtwork, IAsset, Locale } from "@app-types";
 import { mockApiClient } from "./mockApiClient";
 
 interface IDownloadResponse {

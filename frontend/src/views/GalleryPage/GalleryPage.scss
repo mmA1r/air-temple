@@ -3,20 +3,52 @@
 
     width: 100%;
 
-    padding: 56px 40px 88px;
+    padding: 84px 40px 120px;
 
     background-color: var(--background);
+}
+
+.gallery-page__header {
+    position: relative;
+
+    width: min(100%, 900px);
+    margin: 0 auto 96px;
+
+    text-align: center;
+}
+
+.gallery-page__eyebrow {
+    position: relative;
+
+    margin: 0 0 16px;
+
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--accent);
 }
 
 .gallery-page__title {
     position: relative;
 
-    margin: 0 0 42px;
+    margin: 0;
 
-    font-size: 48px;
-    line-height: 1;
+    font-size: 104px;
+    line-height: 0.9;
     font-weight: 900;
     color: var(--text);
+}
+
+.gallery-page__intro {
+    position: relative;
+
+    max-width: 540px;
+    margin: 24px auto 0;
+
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
 }
 
 .gallery-page__state {
@@ -32,32 +64,57 @@
 .gallery-page__years {
     position: relative;
 
+    width: min(100%, 1320px);
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
-    gap: 54px;
+    gap: 130px;
 }
 
 .gallery-page__year {
     position: relative;
+
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 34px;
 }
 
 .gallery-page__year-title {
-    position: relative;
+    position: sticky;
+    top: 116px;
+    align-self: start;
 
-    margin: 0 0 18px;
+    margin: 0;
 
-    font-size: 28px;
-    line-height: 1.2;
-    font-weight: 800;
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 900;
     color: var(--accent);
+    writing-mode: vertical-rl;
+}
+
+.gallery-page__year-title::after {
+    content: "";
+
+    width: 1px;
+    height: 88px;
+
+    display: inline-block;
+
+    margin-top: 18px;
+
+    background-color: currentColor;
+    opacity: 0.48;
 }
 
 .gallery-page__grid {
     position: relative;
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
 }
 
 .gallery-page__card {
@@ -69,26 +126,36 @@
 
     padding: 0;
 
-    background-color: transparent;
-    border: none;
-
+    color: var(--text);
     text-align: left;
     text-decoration: none;
 
     cursor: pointer;
 }
 
+.gallery-page__card--1 {
+    grid-column: 1 / span 7;
+}
+
+.gallery-page__card--2 {
+    grid-column: 8 / span 5;
+    margin-top: 120px;
+}
+
+.gallery-page__card--3 {
+    grid-column: 3 / span 8;
+    margin-top: 34px;
+}
+
 .gallery-page__image-wrap {
     position: relative;
 
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 16 / 10;
 
     display: block;
 
     background-color: var(--soft);
-    border: 1px solid var(--line);
-    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -101,6 +168,7 @@
     display: block;
 
     object-fit: cover;
+    transition: transform 900ms cubic-bezier(0.2, 0.7, 0, 1), filter var(--theme-transition);
 }
 
 .gallery-page__placeholder {
@@ -117,18 +185,89 @@
 .gallery-page__card-title {
     position: relative;
 
-    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 14px;
     line-height: 1.3;
-    font-weight: 800;
-    color: var(--text);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: currentColor;
 }
 
-@media (max-width: 680px) {
+.gallery-page__card-title::before {
+    content: "";
+
+    width: 28px;
+    height: 1px;
+
+    display: block;
+
+    background-color: currentColor;
+}
+
+.gallery-page__card:hover .gallery-page__image {
+    transform: scale(1.035);
+}
+
+@media (max-width: 760px) {
     .gallery-page {
-        padding: 40px 20px 64px;
+        padding: 60px 20px 88px;
+    }
+
+    .gallery-page__header {
+        margin-bottom: 64px;
     }
 
     .gallery-page__title {
-        font-size: 38px;
+        font-size: 52px;
+    }
+
+    .gallery-page__years {
+        gap: 80px;
+    }
+
+    .gallery-page__year {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .gallery-page__year-title {
+        position: relative;
+        top: auto;
+
+        writing-mode: horizontal-tb;
+    }
+
+    .gallery-page__year-title::after {
+        width: 70px;
+        height: 1px;
+
+        margin: 0 0 5px 14px;
+    }
+
+    .gallery-page__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .gallery-page__card--1,
+    .gallery-page__card--2,
+    .gallery-page__card--3 {
+        grid-column: auto;
+
+        margin-top: 0;
+    }
+
+    .gallery-page__card:nth-child(even) {
+        width: 88%;
+        justify-self: end;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-page__image {
+        transition: filter var(--theme-transition);
     }
 }

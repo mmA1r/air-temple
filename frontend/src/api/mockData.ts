@@ -1,4 +1,4 @@
-import type { IArtwork, IAsset } from "../types";
+import type { IArtwork, IAsset } from "@app-types";
 
 function createArtworkImage(title: string, palette: [string, string, string]) {
     const svg = `
@@ -24,14 +24,21 @@ function createArtworkImage(title: string, palette: [string, string, string]) {
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
-function createAsset(id: string, title: string, type: IAsset["type"], visibility: IAsset["visibility"], palette: [string, string, string]): IAsset {
-    const url = createArtworkImage(title, palette);
+function createAsset(
+    id: string,
+    title: string,
+    type: IAsset["type"],
+    visibility: IAsset["visibility"],
+    palette: [string, string, string],
+    sourceUrl?: string,
+): IAsset {
+    const url = sourceUrl || createArtworkImage(title, palette);
 
     return {
         id,
         type,
         originalFileName: `${title.toLowerCase().replaceAll(" ", "-")}.${type === "psd" ? "psd" : "png"}`,
-        mimeType: type === "psd" ? "application/octet-stream" : "image/svg+xml",
+        mimeType: type === "psd" ? "application/octet-stream" : sourceUrl ? "image/webp" : "image/svg+xml",
         size: 2400000,
         url: visibility === "public" ? url : "",
         visibility,
@@ -47,16 +54,37 @@ function createAsset(id: string, title: string, type: IAsset["type"], visibility
     };
 }
 
-const dawnCover = createAsset("asset-dawn-cover", "Dawn Current", "cover", "public", ["#89d7ed", "#f7fbff", "#6ca8cf"]);
+const dawnCover = createAsset(
+    "asset-dawn-cover",
+    "Dawn Current",
+    "cover",
+    "public",
+    ["#89d7ed", "#f7fbff", "#6ca8cf"],
+    "/legacy/artworks/dragon.webp",
+);
 const dawnProcessA = createAsset("asset-dawn-process-a", "Dawn Sketch", "preview", "public", ["#dff4fb", "#90cce2", "#315f86"]);
 const dawnProcessB = createAsset("asset-dawn-process-b", "Dawn Color", "preview", "public", ["#9dd5e6", "#f6f9f2", "#2c87a7"]);
 const dawnPsd = createAsset("asset-dawn-psd", "Dawn Source", "psd", "private", ["#9dd5e6", "#f6f9f2", "#2c87a7"]);
 
-const emberCover = createAsset("asset-ember-cover", "Ember Gate", "cover", "public", ["#332018", "#d46c34", "#f3c27a"]);
+const emberCover = createAsset(
+    "asset-ember-cover",
+    "Ember Gate",
+    "cover",
+    "public",
+    ["#332018", "#d46c34", "#f3c27a"],
+    "/legacy/artworks/azula.webp",
+);
 const emberProcessA = createAsset("asset-ember-process-a", "Ember Sketch", "preview", "public", ["#5a3125", "#e58c45", "#201311"]);
 const emberPsd = createAsset("asset-ember-psd", "Ember Source", "psd", "private", ["#5a3125", "#e58c45", "#201311"]);
 
-const archiveCover = createAsset("asset-archive-cover", "Cloud Archive", "cover", "public", ["#c8ecf7", "#fcfdff", "#8d99c7"]);
+const archiveCover = createAsset(
+    "asset-archive-cover",
+    "Cloud Archive",
+    "cover",
+    "public",
+    ["#c8ecf7", "#fcfdff", "#8d99c7"],
+    "/legacy/artworks/lighthouse.webp",
+);
 const archiveSequence = createAsset("asset-archive-sequence", "Cloud Sequence", "sequence", "private", ["#c8ecf7", "#fcfdff", "#8d99c7"]);
 
 export const mockAssets: IAsset[] = [

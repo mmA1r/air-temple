@@ -1,11 +1,9 @@
-import type { Locale } from "../types";
+import type { Locale } from "@app-types";
 
 interface ITranslations {
     home: string;
     gallery: string;
     admin: string;
-    heroTitle: string;
-    heroLead: string;
     openGallery: string;
     featuredWorks: string;
     process: string;
@@ -31,8 +29,6 @@ export const translations: Record<Locale, ITranslations> = {
         home: "Главная",
         gallery: "Галерея",
         admin: "Админка",
-        heroTitle: "Air Temple",
-        heroLead: "Личная галерея цифровых картин, процессов и исходников.",
         openGallery: "Открыть галерею",
         featuredWorks: "Работы по годам",
         process: "Процесс",
@@ -56,8 +52,6 @@ export const translations: Record<Locale, ITranslations> = {
         home: "Home",
         gallery: "Gallery",
         admin: "Admin",
-        heroTitle: "Air Temple",
-        heroLead: "A personal gallery for digital paintings, process files, and source artwork.",
         openGallery: "Open gallery",
         featuredWorks: "Works by year",
         process: "Process",

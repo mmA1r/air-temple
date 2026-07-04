@@ -1,0 +1,132 @@
+.air-emblem {
+    position: relative;
+
+    width: clamp(116px, 15vw, 190px);
+    aspect-ratio: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--emblem-frame-color);
+
+    filter: drop-shadow(0 14px 32px var(--hero-shadow));
+    transition: color var(--theme-transition), filter var(--theme-transition);
+}
+
+.air-emblem::before,
+.air-emblem::after {
+    content: "";
+
+    position: absolute;
+    inset: 2%;
+
+    border: 1px solid currentColor;
+    border-radius: var(--emblem-frame-radius);
+
+    opacity: 0.42;
+    animation: air-emblem-orbit 18s linear infinite;
+    transition: border-radius var(--theme-transition), color var(--theme-transition);
+}
+
+.air-emblem::after {
+    inset: 12%;
+
+    border-style: dashed;
+
+    opacity: 0.28;
+    animation-direction: reverse;
+    animation-duration: 12s;
+}
+
+.air-emblem__icon {
+    position: relative;
+    z-index: 1;
+
+    width: 62%;
+    height: auto;
+
+    animation: air-emblem-float 6s ease-in-out infinite;
+}
+
+.air-emblem__symbol {
+    position: relative;
+
+    transform-origin: 45px 42px;
+    transition: opacity var(--theme-transition), transform var(--theme-transition), color var(--theme-transition);
+}
+
+.air-emblem__symbol--water {
+    color: var(--water-symbol-color);
+    fill: currentColor;
+    opacity: var(--water-symbol-opacity);
+    transform: rotate(var(--water-symbol-rotation)) scale(var(--water-symbol-scale));
+}
+
+.air-emblem__symbol--fire {
+    color: var(--fire-symbol-color);
+    opacity: var(--fire-symbol-opacity);
+    transform: rotate(var(--fire-symbol-rotation)) scale(var(--fire-symbol-scale));
+}
+
+.air-emblem__fire-dragon {
+    position: relative;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.air-emblem__fire-dragon--left {
+    stroke-dasharray: 4 2;
+}
+
+.air-emblem__fire-dragon--right {
+    stroke-dasharray: 2 2;
+}
+
+.air-emblem__fire-flame {
+    position: relative;
+
+    fill: currentColor;
+    fill-rule: evenodd;
+}
+
+.air-emblem__fire-core {
+    position: relative;
+
+    fill: var(--fire-core-color);
+}
+
+@keyframes air-emblem-orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes air-emblem-float {
+
+    0%,
+    100% {
+        transform: translateY(-3px) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(5px) rotate(1deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .air-emblem::before,
+    .air-emblem::after,
+    .air-emblem__icon {
+        animation: none;
+    }
+}

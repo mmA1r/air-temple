@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 
-import AppShell from "../components/AppShell/AppShell";
-import "../styles/index.scss";
+import AppShell from "@components/AppShell/AppShell";
+import "@styles/index.scss";
 
 export const metadata: Metadata = {
     title: {
@@ -38,9 +38,11 @@ interface IRootLayoutProps {
 
 function RootLayout(props: IRootLayoutProps) {
     return (
-        <html lang="ru" suppressHydrationWarning>
+        <html lang="en">
             <body>
-                <AppShell>{props.children}</AppShell>
+                <AppShell>
+                    {props.children}
+                </AppShell>
             </body>
         </html>
     );

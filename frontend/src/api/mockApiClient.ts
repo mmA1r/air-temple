@@ -1,4 +1,4 @@
-import type { IAdminArtworkPayload, IArtwork, IAsset, Locale } from "../types";
+import type { IAdminArtworkPayload, IArtwork, IAsset, Locale } from "@app-types";
 import { mockArtworks, mockAssets } from "./mockData";
 
 class MockApiClient {
@@ -101,13 +101,13 @@ class MockApiClient {
             processingStatus: "ready",
             variants: isPublic
                 ? [
-                      {
-                          name: `${file.name}-web`,
-                          url,
-                          width: 1200,
-                          height: 1500,
-                      },
-                  ]
+                    {
+                        name: `${file.name}-web`,
+                        url,
+                        width: 1200,
+                        height: 1500,
+                    },
+                ]
                 : [],
         };
 

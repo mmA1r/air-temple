@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import type { Locale, ThemeName } from "../../types";
-import { useAppContext } from "../../context/AppContext";
+import { useAppContext } from "@context/AppContext";
+import type { Locale, ThemeName } from "@app-types";
 
 import "./AppHeader.scss";
 
@@ -21,7 +21,7 @@ function AppHeader() {
     return (
         <header className="app-header">
             <Link className="app-header__brand" href="/">
-                Air Temple
+                mmAir
             </Link>
             <nav className="app-header__nav" aria-label="Primary navigation">
                 <Link className={getLinkClassName("/")} href="/">

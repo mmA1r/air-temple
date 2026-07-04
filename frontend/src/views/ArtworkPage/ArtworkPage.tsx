@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
-import { apiClient } from "../../api/apiClient";
-import { useAppContext } from "../../context/AppContext";
-import type { IArtwork } from "../../types";
+import { apiClient } from "@api/apiClient";
+import { useAppContext } from "@context/AppContext";
+import type { IArtwork } from "@app-types";
 
 import "./ArtworkPage.scss";
 

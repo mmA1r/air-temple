@@ -3,9 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
-import { apiClient } from "../../api/apiClient";
-import { useAppContext } from "../../context/AppContext";
-import type { IArtwork } from "../../types";
+import { apiClient } from "@api/apiClient";
+import { useAppContext } from "@context/AppContext";
+import type { IArtwork } from "@app-types";
 
 import "./GalleryPage.scss";
 
@@ -58,7 +58,11 @@ function GalleryPage() {
 
     return (
         <section className="gallery-page">
-            <h1 className="gallery-page__title">{copy.featuredWorks}</h1>
+            <header className="gallery-page__header">
+                <p className="gallery-page__eyebrow">Piece of art</p>
+                <h1 className="gallery-page__title">{copy.featuredWorks}</h1>
+                <p className="gallery-page__intro">An archive arranged by year. Every image opens its process and source files.</p>
+            </header>
             {isLoading && <p className="gallery-page__state">Loading...</p>}
             {error && <p className="gallery-page__state">{error}</p>}
             {!isLoading && !error && years.length === 0 && <p className="gallery-page__state">No artworks yet.</p>}
@@ -67,9 +71,9 @@ function GalleryPage() {
                     <section className="gallery-page__year" key={year}>
                         <h2 className="gallery-page__year-title">{year}</h2>
                         <div className="gallery-page__grid">
-                            {groupedArtworks[year].map((artwork) => (
+                            {groupedArtworks[year].map((artwork, index) => (
                                 <Link
-                                    className="gallery-page__card"
+                                    className={`gallery-page__card gallery-page__card--${(index % 3) + 1}`}
                                     key={artwork.id}
                                     href={`/artworks/${artwork.slug}`}
                                 >

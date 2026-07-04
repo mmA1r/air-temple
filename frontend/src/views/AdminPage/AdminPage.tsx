@@ -2,9 +2,9 @@
 
 import { FormEvent, useEffect, useState } from "react";
 
-import { apiClient } from "../../api/apiClient";
-import { useAppContext } from "../../context/AppContext";
-import type { IAdminArtworkPayload, IArtwork, IAsset, ArtworkStatus, AssetVisibility } from "../../types";
+import { apiClient } from "@api/apiClient";
+import { useAppContext } from "@context/AppContext";
+import type { IAdminArtworkPayload, IArtwork, IAsset, ArtworkStatus, AssetVisibility } from "@app-types";
 
 import "./AdminPage.scss";
 

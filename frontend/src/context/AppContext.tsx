@@ -2,9 +2,9 @@
 
 import { createContext, useContext } from "react";
 
-import useLocalStorageState from "../hooks/useLocalStorageState";
-import { translations } from "../i18n/translations";
-import type { Locale, ThemeName } from "../types";
+import useLocalStorageState from "@hooks/useLocalStorageState";
+import { translations } from "@i18n/translations";
+import type { Locale, ThemeName } from "@app-types";
 
 type Copy = (typeof translations)["ru"];
 

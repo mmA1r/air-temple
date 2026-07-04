@@ -15,6 +15,16 @@
         "forceConsistentCasingInFileNames": true,
         "module": "ESNext",
         "moduleResolution": "Bundler",
+        "paths": {
+            "@api/*": ["./src/api/*"],
+            "@components/*": ["./src/components/*"],
+            "@context/*": ["./src/context/*"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@i18n/*": ["./src/i18n/*"],
+            "@styles/*": ["./src/styles/*"],
+            "@app-types": ["./src/types.ts"],
+            "@views/*": ["./src/views/*"]
+        },
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
