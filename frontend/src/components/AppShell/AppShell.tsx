@@ -4,8 +4,6 @@ import { useEffect } from "react";
 
 import { usePathname } from "next/navigation";
 
-import AppFooter from "@components/AppFooter/AppFooter";
-import AppHeader from "@components/AppHeader/AppHeader";
 import { AppContextProvider, useAppContextValue } from "@context/AppContext";
 
 interface IAppShellProps {
@@ -25,11 +23,9 @@ function AppShellContent(props: IAppShellProps) {
     return (
         <AppContextProvider value={appContext}>
             <div className={isHomePage ? "app-shell app-shell--home" : "app-shell"}>
-                {!isHomePage && <AppHeader />}
                 <main className={isHomePage ? "app-shell__main app-shell__main--home" : "app-shell__main"}>
                     {props.children}
                 </main>
-                {!isHomePage && <AppFooter />}
             </div>
         </AppContextProvider>
     );

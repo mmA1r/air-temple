@@ -5,11 +5,9 @@ import type { CSSProperties } from "react";
 
 import Link from "next/link";
 
-import AirEmblem from "@components/ui/icons/Air/AirEmblem";
-import CloudScene from "@components/CloudScene/CloudScene";
-import GalleryPortal from "@components/ui/icons/GalleryPortal/GalleryPortal";
+import AirEmblem from "@components/ui/icons/WaterKoi/WaterKoi";
+import GalleryPortal from "@components/ui/icons/Air/Air";
 import { useAppContext } from "@context/AppContext";
-import type { Locale, ThemeName } from "@app-types";
 
 import "./HomePage.scss";
 
@@ -41,6 +39,9 @@ interface IThemeBlend {
     to: ThemeName;
     id: number;
 }
+
+export type Locale = "ru" | "en";
+export type ThemeName = "water-air" | "fire-earth";
 
 const arcPoints = {
     start: { x: -80, y: 184 },
@@ -215,7 +216,6 @@ function HomePage() {
     return (
         <div className="home-page" data-glass={glassMode}>
             <section className="home-page__cover" aria-labelledby="home-title">
-                <CloudScene />
                 {themeBlend && (
                     <div
                         className="home-page__theme-blend"
@@ -342,7 +342,6 @@ function HomePage() {
                     <h1 className="home-page__title" id="home-title">
                         mmAir
                     </h1>
-                    <GalleryPortal label={copy.openGallery} />
                 </div>
 
                 <ul className="home-page__socials" aria-label={copy.socials}>
