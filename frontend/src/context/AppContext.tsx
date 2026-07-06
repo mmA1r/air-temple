@@ -1,10 +1,11 @@
 "use client";
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 import useLocalStorageState from "@hooks/useLocalStorageState";
 import { translations } from "@i18n/translations";
 import type { Locale, ThemeName } from "@app-types";
+import { animateThemeVariables } from "@utils/themeTransition";
 
 type Copy = (typeof translations)["ru"];
 
@@ -17,6 +18,7 @@ interface IAppContext {
 }
 
 const AppContext = createContext<IAppContext | null>(null);
+const themeCookieKey = "air-temple-theme";
 
 interface IAppContextProviderProps {
     children: React.ReactNode;
@@ -27,9 +29,15 @@ export function AppContextProvider(props: IAppContextProviderProps) {
     return <AppContext.Provider value={props.value}>{props.children}</AppContext.Provider>;
 }
 
-export function useAppContextValue(): IAppContext {
+export function useAppContextValue(initialTheme: ThemeName): IAppContext {
     const [locale, setLocale] = useLocalStorageState<Locale>("air-temple-locale", "ru");
-    const [theme, setTheme] = useLocalStorageState<ThemeName>("air-temple-theme", "water-air");
+    const [theme, setThemeState] = useState<ThemeName>(initialTheme);
+
+    function setTheme(nextTheme: ThemeName) {
+        animateThemeVariables(nextTheme);
+        setThemeState(nextTheme);
+        document.cookie = `${themeCookieKey}=${nextTheme}; path=/; max-age=31536000; samesite=lax`;
+    }
 
     return {
         copy: translations[locale],

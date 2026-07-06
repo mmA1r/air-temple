@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.DS_Store
+
+frontend/node_modules/
+frontend/dist/
+frontend/.next/
+*.tsbuildinfo
+backend/.env
+
+.edge-*/
+collage-*.png
+
+piece-of-art-main

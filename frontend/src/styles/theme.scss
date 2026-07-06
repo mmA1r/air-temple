@@ -1,0 +1,94 @@
+:root {
+    --theme-transition: 760ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --theme-transition-duration: 0.76;
+    --theme-transition-ease: power1.inOut;
+
+    --background_water-air: #eef8fb;
+    --surface_water-air: #ffffff;
+    --text_water-air: #132f3c;
+    --muted_water-air: #54717c;
+    --accent_water-air: #247da4;
+    --mark-a_water-air: #63c8df;
+    --mark-b_water-air: #f8fcff;
+    --hero-fallback_water-air: #6c99e3;
+    --hero-ink_water-air: #ffffff;
+    --hero-shadow_water-air: rgba(52, 82, 139, 0.44);
+    --theme-water-opacity_water-air: 1;
+    --theme-fire-opacity_water-air: 0;
+    --glass-tint-top_water-air: rgba(241, 249, 255, 0.36);
+    --glass-tint-bottom_water-air: rgba(186, 213, 246, 0.18);
+    --glass-blur_water-air: 22px;
+    --glass-saturate_water-air: 1.2;
+    --glass-contrast_water-air: 1.04;
+    --bubble-ink_water-air: #2b72a0;
+    --bubble-hover_water-air: #a9e6f5;
+    --gallery-frame-radius_water-air: 50%;
+
+    --background_fire-earth: #151c17;
+    --surface_fire-earth: #202a22;
+    --text_fire-earth: #f3f1da;
+    --muted_fire-earth: #aeb99a;
+    --accent_fire-earth: #abc174;
+    --mark-a_fire-earth: #f08a39;
+    --mark-b_fire-earth: #8eaa69;
+    --hero-fallback_fire-earth: #18231c;
+    --hero-ink_fire-earth: #f5ead0;
+    --hero-shadow_fire-earth: rgba(3, 12, 7, 0.68);
+    --theme-water-opacity_fire-earth: 0;
+    --theme-fire-opacity_fire-earth: 1;
+    --glass-tint-top_fire-earth: rgba(167, 188, 122, 0.24);
+    --glass-tint-bottom_fire-earth: rgba(33, 48, 29, 0.34);
+    --glass-blur_fire-earth: 24px;
+    --glass-saturate_fire-earth: 1.16;
+    --glass-contrast_fire-earth: 1.08;
+    --bubble-ink_fire-earth: #1a2717;
+    --bubble-hover_fire-earth: #b7c985;
+    --gallery-frame-radius_fire-earth: 20%;
+}
+
+:root,
+:root[data-theme="water-air"] {
+    --background: var(--background_water-air);
+    --surface: var(--surface_water-air);
+    --text: var(--text_water-air);
+    --muted: var(--muted_water-air);
+    --accent: var(--accent_water-air);
+    --mark-a: var(--mark-a_water-air);
+    --mark-b: var(--mark-b_water-air);
+    --hero-fallback: var(--hero-fallback_water-air);
+    --hero-ink: var(--hero-ink_water-air);
+    --hero-shadow: var(--hero-shadow_water-air);
+    --theme-water-opacity: var(--theme-water-opacity_water-air);
+    --theme-fire-opacity: var(--theme-fire-opacity_water-air);
+    --glass-tint-top: var(--glass-tint-top_water-air);
+    --glass-tint-bottom: var(--glass-tint-bottom_water-air);
+    --glass-blur: var(--glass-blur_water-air);
+    --glass-saturate: var(--glass-saturate_water-air);
+    --glass-contrast: var(--glass-contrast_water-air);
+    --bubble-ink: var(--bubble-ink_water-air);
+    --bubble-hover: var(--bubble-hover_water-air);
+    --gallery-frame-radius: var(--gallery-frame-radius_water-air);
+}
+
+:root[data-theme="fire-earth"] {
+    --background: var(--background_fire-earth);
+    --surface: var(--surface_fire-earth);
+    --text: var(--text_fire-earth);
+    --muted: var(--muted_fire-earth);
+    --accent: var(--accent_fire-earth);
+    --mark-a: var(--mark-a_fire-earth);
+    --mark-b: var(--mark-b_fire-earth);
+    --hero-fallback: var(--hero-fallback_fire-earth);
+    --hero-ink: var(--hero-ink_fire-earth);
+    --hero-shadow: var(--hero-shadow_fire-earth);
+    --theme-water-opacity: var(--theme-water-opacity_fire-earth);
+    --theme-fire-opacity: var(--theme-fire-opacity_fire-earth);
+    --glass-tint-top: var(--glass-tint-top_fire-earth);
+    --glass-tint-bottom: var(--glass-tint-bottom_fire-earth);
+    --glass-blur: var(--glass-blur_fire-earth);
+    --glass-saturate: var(--glass-saturate_fire-earth);
+    --glass-contrast: var(--glass-contrast_fire-earth);
+    --bubble-ink: var(--bubble-ink_fire-earth);
+    --bubble-hover: var(--bubble-hover_fire-earth);
+    --gallery-frame-radius: var(--gallery-frame-radius_fire-earth);
+}

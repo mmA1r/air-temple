@@ -1,0 +1,288 @@
+.home-rim-menu {
+    position: absolute;
+    top: var(--arc-y);
+    left: var(--arc-x);
+    z-index: 8;
+
+    width: 112px;
+    height: 112px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, -50%) rotate(var(--arc-angle));
+    pointer-events: auto;
+
+    @media (max-width: 760px) {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.home-rim-menu__orb {
+    position: relative;
+
+    width: 46px;
+    height: 46px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    background-color: color-mix(in srgb, var(--hero-ink) 24%, transparent);
+    border: 1px solid color-mix(in srgb, var(--hero-ink) 58%, transparent);
+    border-radius: 50%;
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--hero-ink) 20%, transparent),
+        0 10px 26px color-mix(in srgb, var(--hero-shadow) 20%, transparent);
+    backdrop-filter: blur(12px);
+
+    color: var(--hero-ink);
+
+    cursor: pointer;
+    overflow: hidden;
+    animation: home-rim-menu-orb-sway 6.4s ease-in-out infinite;
+    transition:
+        color var(--theme-transition),
+        background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        box-shadow var(--theme-transition),
+        opacity 360ms ease,
+        transform 560ms cubic-bezier(0.18, 0.9, 0.24, 1);
+}
+
+.home-rim-menu__orb::before,
+.home-rim-menu__orb::after,
+.home-rim-menu__link::before {
+    content: "";
+
+    position: absolute;
+
+    display: block;
+
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.home-rim-menu__orb::before {
+    top: 8px;
+    left: 9px;
+
+    width: 28%;
+    height: 18%;
+
+    background-color: color-mix(in srgb, var(--hero-ink) 82%, transparent);
+    filter: blur(1px);
+    opacity: 0.34;
+    transform: rotate(-24deg);
+    transition: opacity 260ms ease, transform 360ms ease;
+}
+
+.home-rim-menu__orb::after {
+    inset: -18%;
+
+    background: radial-gradient(circle at 50% 50%, var(--bubble-hover), transparent 58%);
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 520ms ease, transform 680ms cubic-bezier(0.2, 0.9, 0.22, 1);
+}
+
+.home-rim-menu__orb:hover {
+    transform: translateY(-3px) scale(1.08);
+
+    background-color: color-mix(in srgb, var(--bubble-hover) 56%, var(--hero-ink));
+    border-color: color-mix(in srgb, var(--bubble-hover) 52%, var(--hero-ink));
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--hero-ink) 26%, transparent),
+        0 16px 34px color-mix(in srgb, var(--hero-shadow) 24%, transparent);
+}
+
+.home-rim-menu__orb:hover::before {
+    opacity: 0.98;
+    transform: translate(2px, -1px) rotate(-18deg) scale(1.08);
+}
+
+.home-rim-menu__orb:hover::after {
+    opacity: 0.34;
+    transform: scale(1);
+}
+
+.home-rim-menu__orb:focus-visible,
+.home-rim-menu__link:focus-visible {
+    outline: 2px solid var(--hero-ink);
+    outline-offset: 4px;
+}
+
+.home-rim-menu__bar {
+    position: absolute;
+    left: 14px;
+    z-index: 1;
+
+    width: 18px;
+    height: 1px;
+
+    display: block;
+
+    background-color: currentColor;
+    transition: transform 260ms ease, top 260ms ease;
+}
+
+.home-rim-menu__bar--top {
+    top: 18px;
+}
+
+.home-rim-menu__bar--bottom {
+    top: 27px;
+}
+
+.home-rim-menu__panel {
+    position: absolute;
+    top: -116px;
+    left: 50%;
+    z-index: 0;
+
+    width: 260px;
+    max-width: none;
+    height: 120px;
+
+    display: block;
+
+    padding: 0;
+
+    transform: translateX(-50%) rotate(calc(-1 * var(--arc-angle)));
+    pointer-events: none;
+
+    @media (max-width: 760px) {
+        top: -104px;
+        left: 50%;
+
+        width: 210px;
+        height: 116px;
+    }
+}
+
+.home-rim-menu__panel--open {
+    pointer-events: auto;
+
+    @media (max-width: 760px) {
+        max-width: 180px;
+    }
+}
+
+.home-rim-menu__link {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    min-width: 54px;
+    min-height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 13px;
+
+    transform: translate(-50%, 14px) scale(0.82);
+    opacity: 0;
+    background-color: color-mix(in srgb, var(--hero-ink) 66%, transparent);
+    border: 1px solid color-mix(in srgb, var(--hero-ink) 48%, transparent);
+    border-radius: 999px;
+    backdrop-filter: blur(12px);
+
+    font-family: var(--font-ui);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 800;
+    color: var(--hero-ink);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+        opacity 380ms ease,
+        background-color var(--theme-transition),
+        border-color var(--theme-transition),
+        color var(--theme-transition),
+        transform 620ms cubic-bezier(0.17, 0.9, 0.22, 1.08);
+    transition-delay: 0ms;
+}
+
+.home-rim-menu__link::before {
+    inset: -60%;
+
+    background: radial-gradient(circle at 50% 50%, var(--bubble-hover), transparent 58%);
+    opacity: 0;
+    transition: opacity 320ms ease, transform 360ms ease;
+}
+
+.home-rim-menu__link:hover {
+    background-color: color-mix(in srgb, var(--bubble-hover) 38%, transparent);
+    border-color: color-mix(in srgb, var(--bubble-hover) 62%, var(--hero-ink));
+}
+
+.home-rim-menu__link:hover::before {
+    opacity: 0.45;
+    transform: scale(0.72);
+}
+
+.home-rim-menu__link--gallery-open,
+.home-rim-menu__link--donate-open,
+.home-rim-menu__link--glass-open {
+    opacity: 1;
+}
+
+.home-rim-menu__link--gallery-open {
+    transform: translate(-96px, -22px) scale(1);
+    transition-delay: 40ms;
+
+    @media (max-width: 760px) {
+        transform: translate(-80px, -12px) scale(1);
+    }
+}
+
+.home-rim-menu__link--donate-open {
+    transform: translate(-50%, -52px) scale(1);
+    transition-delay: 120ms;
+
+    @media (max-width: 760px) {
+        transform: translate(-50%, -44px) scale(1);
+    }
+}
+
+.home-rim-menu__link--glass-open {
+    transform: translate(26px, -18px) scale(1);
+    transition-delay: 200ms;
+
+    @media (max-width: 760px) {
+        transform: translate(12px, -10px) scale(1);
+    }
+}
+
+@keyframes home-rim-menu-orb-sway {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    35% {
+        translate: 0 -1px;
+    }
+
+    68% {
+        translate: 0 1px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-rim-menu__orb,
+    .home-rim-menu__panel,
+    .home-rim-menu__link {
+        animation: none;
+        transition: none;
+    }
+}

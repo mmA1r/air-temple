@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { cookies } from "next/headers";
 
 import AppShell from "@components/AppShell/AppShell";
+import type { ThemeName } from "@app-types";
 import "@styles/index.scss";
 
 export const metadata: Metadata = {
@@ -36,11 +38,20 @@ interface IRootLayoutProps {
     children: React.ReactNode;
 }
 
-function RootLayout(props: IRootLayoutProps) {
+const themeCookieKey = "air-temple-theme";
+
+function getValidTheme(value: string | undefined): ThemeName {
+    return value === "fire-earth" ? "fire-earth" : "water-air";
+}
+
+async function RootLayout(props: IRootLayoutProps) {
+    const cookieStore = await cookies();
+    const initialTheme = getValidTheme(cookieStore.get(themeCookieKey)?.value);
+
     return (
-        <html lang="en">
+        <html lang="en" data-theme={initialTheme}>
             <body>
-                <AppShell>
+                <AppShell initialTheme={initialTheme}>
                     {props.children}
                 </AppShell>
             </body>

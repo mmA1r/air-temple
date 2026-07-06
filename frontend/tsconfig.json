@@ -39,6 +39,9 @@
             ],
             "@views/*": [
                 "./src/views/*"
+            ],
+            "@utils/*": [
+                "./src/utils/*"
             ]
         },
         "resolveJsonModule": true,

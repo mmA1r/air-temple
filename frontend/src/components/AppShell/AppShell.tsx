@@ -5,14 +5,16 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import { AppContextProvider, useAppContextValue } from "@context/AppContext";
+import type { ThemeName } from "@app-types";
 
 interface IAppShellProps {
     children: React.ReactNode;
+    initialTheme: ThemeName;
 }
 
 function AppShellContent(props: IAppShellProps) {
     const pathname = usePathname();
-    const appContext = useAppContextValue();
+    const appContext = useAppContextValue(props.initialTheme);
     const isHomePage = pathname === "/";
 
     useEffect(() => {
@@ -32,7 +34,7 @@ function AppShellContent(props: IAppShellProps) {
 }
 
 function AppShell(props: IAppShellProps) {
-    return <AppShellContent>{props.children}</AppShellContent>;
+    return <AppShellContent initialTheme={props.initialTheme}>{props.children}</AppShellContent>;
 }
 
 export default AppShell;
