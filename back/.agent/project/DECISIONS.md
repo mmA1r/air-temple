@@ -37,3 +37,24 @@ Template for new entries:
 - Decision: New artwork starts as a private draft. The author previews the work and publishes it through the admin panel.
 - Rationale: The author can assemble the artwork and its optional creation materials before visitors see it.
 - Consequences: Both gallery reads and file downloads respect publication status. Publication requires the original PNG. Optional attachments can be absent.
+
+## ADR-0004 — Use Google sign-in for the author
+
+- Date: 2026-11-22
+- Status: accepted
+- Decision: The author signs in with Google to access the admin panel.
+- Consequences: The backend must verify the Google identity and grant author privileges only to the designated account. Visitors can continue to browse and download published work anonymously.
+
+## ADR-0005 — Start with PostgreSQL and Cloudflare R2
+
+- Date: 2026-11-22
+- Status: superseded by ADR-0006
+- Decision: Store artwork metadata in PostgreSQL and original media in a private R2 bucket. Authorize draft previews in Go. Allow temporary direct downloads for published files.
+- Rationale: Large public downloads can bypass the application server. Stable artwork IDs keep visitor-facing routes independent of the storage provider.
+
+## ADR-0006 — Store originals on a private self-hosted volume
+
+- Date: 2026-11-22
+- Status: accepted
+- Decision: Keep metadata in PostgreSQL and store originals under MEDIA_DIR. Go checks access before serving previews and downloads.
+- Consequences: The operator supplies download bandwidth, disk capacity and independent backups.

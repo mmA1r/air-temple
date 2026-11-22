@@ -20,13 +20,13 @@ Status: PARTIAL
 ## Technical decisions (may initially be UNSET)
 
 - Language/runtime: Go
-- Framework/router: UNSET
-- Database/migrations: UNSET
-- File or object storage: UNSET
-- Authentication/authorization: Anonymous visitor access. Only the author can upload files or edit content. Author sign-in method is UNSET.
+- Framework/router: Go net/http
+- Database/migrations: PostgreSQL with numbered SQL migrations
+- File or object storage: Private self-hosted media directory
+- Authentication/authorization: Visitors browse and download anonymously. The author signs in with Google. Only the author's designated Google account can access the admin panel and author operations.
 - Background jobs: UNSET
 - Hosting/deployment: UNSET
-- Testing/verification commands: UNSET
+- Testing/verification commands: go test ./..., go vet ./..., go build ./...
 - Current media inventory: 140 PSD files and 241 PNG files. The two largest PSDs shown are 251,477 KB and 236,054 KB. Total library size, video sizes and download traffic are UNSET.
 - Security/privacy requirements: UNSET
 - SEO/social sharing: UNSET
@@ -39,6 +39,6 @@ Status: PARTIAL
 - Reference materials:
 - Environments and env variable NAMES only:
 - Proposed architecture: One Go HTTP service owns artwork, media associations, editable homepage content and author operations. Keep homepage layout and motion in the frontend. Use smaller previews for browsing and retain the exact downloadable originals.
-- Proposed persistence: PostgreSQL for artwork, asset references, step positions and homepage fields. Store file bytes in object storage. A persistent volume with separate backups is an alternative for a single-server deployment.
-- Open technology choices: Persistence implementation and author sign-in method. Hosting and capacity planning are deferred.
+- Persistence: Use PostgreSQL for gallery metadata and a private self-hosted volume for media bytes.
+- Open technology choices: Hosting and capacity planning are deferred.
 - Last reviewed: 2026-11-22

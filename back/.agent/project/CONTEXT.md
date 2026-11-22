@@ -5,13 +5,11 @@
 ## Verified repository state
 
 - Last inspected: 2026-11-22
-- Evidence: Backend file inventory (`rg --files --hidden`) contains AGENTS.md and the Markdown agent kit. The sibling front directory is empty.
-- Existing modules and responsibility map: Not implemented yet
-- Data flow and external integrations: Not implemented yet
-- Routing / API and middleware conventions: Not implemented yet
-- Storage and schema: Not implemented yet
-- Config, environment variable NAMES: Not implemented yet
-- Testing and build commands: Not implemented yet
+- The Go service entry point and PNG gallery handlers live in cmd/api.
+- Admin routes verify Google ID tokens and check the configured author subject. Public reads require a published row. Private previews stream through the authenticated API.
+- PostgreSQL schema is installed manually from migrations/001_artworks.sql. Raw PNG files live in a private directory under MEDIA_DIR keyed by artwork UUID.
+- README.md documents configuration variables, HTTP routes and local startup.
+- Verification commands: go test ./..., go vet ./..., go build ./...
 
 ## Established conventions
 
@@ -19,8 +17,8 @@
 
 ## Known constraints and debt
 
-- UNSET
+- Failed uploads may leave private, incomplete records requiring reconciliation. Optional attachments and homepage editing are pending.
 
 ## Last substantial verified changes
 
-- None
+- Added the first PNG draft, preview, publish and download workflow.
