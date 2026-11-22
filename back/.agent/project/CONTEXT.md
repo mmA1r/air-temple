@@ -5,7 +5,7 @@
 ## Verified repository state
 
 - Last inspected: 2026-11-22
-- The Go service entry point and PNG gallery handlers live in cmd/api.
+- The Go service entry point lives in cmd/api. The HTTP router and handlers live in internal/gallery. HTTP tests live in tests/ and use the same router as the running service.
 - Admin routes verify Google ID tokens and check the configured author subject. Public reads require a published row. Private previews stream through the authenticated API.
 - PostgreSQL schema is installed manually from migrations/001_artworks.sql. Raw PNG files live in a private directory under MEDIA_DIR keyed by artwork UUID.
 - README.md documents configuration variables, HTTP routes and local startup.
