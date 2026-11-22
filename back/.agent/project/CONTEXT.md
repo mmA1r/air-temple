@@ -17,8 +17,9 @@
 
 ## Known constraints and debt
 
-- Failed uploads may leave private, incomplete records requiring reconciliation. Optional attachments and homepage editing are pending.
+- Interrupted uploads can require private file reconciliation. Homepage editing is pending.
 
 ## Last substantial verified changes
 
 - Added the first PNG draft, preview, publish and download workflow.
+- Migration 002 and the media routes add optional PSDs, MP4s and ordered JPEG steps to existing artworks. APIs support replace, remove, reorder and publication-aware reads.

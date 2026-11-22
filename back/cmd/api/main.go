@@ -56,6 +56,13 @@ func run() error {
 	mux.HandleFunc("POST /admin/artworks", a.admin(a.create))
 	mux.HandleFunc("GET /admin/artworks/{id}/original", a.admin(a.preview))
 	mux.HandleFunc("POST /admin/artworks/{id}/publish", a.admin(a.publish))
+	mux.HandleFunc("GET /artworks/{id}/media", a.mediaList(false))
+	mux.HandleFunc("GET /artworks/{id}/media/{slot}", a.mediaFile(false))
+	mux.HandleFunc("GET /admin/artworks/{id}/media", a.admin(a.mediaList(true)))
+	mux.HandleFunc("GET /admin/artworks/{id}/media/{slot}", a.admin(a.mediaFile(true)))
+	mux.HandleFunc("PUT /admin/artworks/{id}/media/{slot}", a.admin(a.putMedia))
+	mux.HandleFunc("DELETE /admin/artworks/{id}/media/{slot}", a.admin(a.deleteMedia))
+	mux.HandleFunc("PUT /admin/artworks/{id}/step-order", a.admin(a.orderSteps))
 	addr := os.Getenv("LISTEN_ADDR")
 	if addr == "" {
 		addr = "127.0.0.1:8080"

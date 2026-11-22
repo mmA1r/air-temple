@@ -192,22 +192,26 @@ func (a *app) saveOriginal(id string, data []byte) error {
 }
 
 func (a *app) serveOriginal(w http.ResponseWriter, r *http.Request, id string, download bool) {
-	f, err := a.media.Open(originalKey(id))
+	a.serveFile(w, r, originalKey(id), id+".png", "image/png", download)
+}
+
+func (a *app) serveFile(w http.ResponseWriter, r *http.Request, path, name, contentType string, download bool) {
+	f, err := a.media.Open(path)
 	if err != nil {
-		failed(w, "open original "+id+" failed")
+		failed(w, "open media failed")
 		return
 	}
 	defer f.Close()
 	info, err := f.Stat()
 	if err != nil || !info.Mode().IsRegular() {
-		failed(w, "stat original "+id+" failed")
+		failed(w, "stat media failed")
 		return
 	}
-	w.Header().Set("Content-Type", "image/png")
+	w.Header().Set("Content-Type", contentType)
 	w.Header().Set("X-Content-Type-Options", "nosniff")
 	if download {
-		w.Header().Set("Content-Disposition", "attachment; filename="+id+".png")
-		w.Header().Set("Cache-Control", "no-store")
+		w.Header().Set("Content-Disposition", "attachment; filename="+name)
+		w.Header().Add("Cache-Control", "no-store")
 	}
-	http.ServeContent(w, r, id+".png", info.ModTime(), f)
+	http.ServeContent(w, r, name, info.ModTime(), f)
 }
